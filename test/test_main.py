@@ -4,8 +4,8 @@ from main import read_args, main
 
 
 class TestProgram(unittest.TestCase):
-    def setup(self):
-        print('\n========================')
+    def setUp(self):
+        print('========================')
     
     def test_read_arg_no_filepatch(self):
         print('Executing test: test_reads_arg_no_filepath')

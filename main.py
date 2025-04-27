@@ -15,7 +15,6 @@ def read_args(argv):
              i += 1
     return output        
 
-
 def process_path(path):
     if not os.path.exists(path):
         return None
@@ -29,7 +28,6 @@ def process_path(path):
     finally:
         return binary_data
     
-
 def read_type_file(data):
     if len(data) >= 8 and data[:8] == b'\x89PNG\r\n\x1a\n':
         return 'png'
@@ -101,7 +99,6 @@ def binary_to_png(data):
 
     return img_matrix
 
-
 def main():
     args = read_args(sys.argv)
     if 'filepath' not in args:
@@ -119,7 +116,6 @@ def main():
             img_matrix = binary_to_png(binary_data)
             display_rgb_matrix(img_matrix)
             print(img_matrix)
-
 
 if __name__ == '__main__':
     main()

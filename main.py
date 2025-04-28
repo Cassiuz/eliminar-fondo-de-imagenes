@@ -1,7 +1,8 @@
 import sys
 import os
 import tkinter as tk
-import zlib
+#import zlib
+from modules.inflate import inflate_decompress
 
 
 def read_args(argv):
@@ -57,7 +58,7 @@ def display_rgb_matrix(data):
 
 def binary_to_png(data):
     width = height = depth = color_type = compression_method = interlace_method = None
-    IDAT_data = []
+    IDAT_data = bytearray()
 
     offset = 8
     while offset < len(data):
@@ -82,7 +83,8 @@ def binary_to_png(data):
 
         offset += chunk_length + 4
 
-    decompressed_data = zlib.decompress(bytes(IDAT_data))
+    #decompressed_data = zlib.decompress(bytes(IDAT_data))
+    decompressed_data = inflate_decompress(IDAT_data)
   
     img_matrix = []
     offset = 0
